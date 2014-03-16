@@ -20,7 +20,7 @@ Puppet::Type.type(:package).provide :brewcask,
   def self.run(*cmds)
     puts "run: entering"
     command = ["sudo", "-E", "-u", Facter[:luser].value, "#{home}/bin/brew", "cask", *cmds].flatten.join(' ')
-    puts "command: #{command}"
+    puts "running command: #{command}"
     output = `#{command}`
     unless $? == 0
       fail "Failed running #{command}"
